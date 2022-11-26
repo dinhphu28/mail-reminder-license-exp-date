@@ -44,8 +44,10 @@ public class EmailNotification {
                 String[] receivers = receiversLs.toArray(new String[0]);
                 String[] ccReceivers = ccReceiverLs.toArray(new String[0]);
 
+                String mailContent = event.getContent() + "\n" + "<h3 style='color:red;'> Expired day: " + event.getDateExact() + "</h3>";
+
                 try {
-                    mailSenderUtil.sendHtmlEmail(event.getTitle(), event.getContent(), receivers, ccReceivers);
+                    mailSenderUtil.sendHtmlEmail(event.getTitle(), mailContent, receivers, ccReceivers);
                 } catch (Exception e) {
                     // TODO: handle exception
 
