@@ -32,6 +32,10 @@ public class MailSenderUtil {
         // message.setContent(htmlMsg, "text/html");
         message.setContent(htmlMsg, "text/html; charset=UTF-8");
 
+        // message.setFrom("noreply@idb.com.vn");
+
+        helper.setFrom("noreply@gmail.com");
+
         helper.setTo(receiver);
 
         helper.setCc(ccReceiver);
