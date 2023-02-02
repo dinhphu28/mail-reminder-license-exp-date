@@ -1,10 +1,12 @@
 package com.idb.reminder.Services;
 
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.idb.reminder.Entities.Event;
@@ -22,6 +24,9 @@ public class EmailNotification {
     @Autowired
     private MailSenderUtil mailSenderUtil;
 
+    @Value("${idb.properties.date-range}")
+    private Integer dateRange;
+
     public void sendNotificationMailToAll() {
         List<Event> events = eventService.retrieveAll();
 
@@ -29,7 +34,7 @@ public class EmailNotification {
 
         for (Event event : events) {
 
-            if((now.isEqual(event.getDateBef()) || now.isAfter(event.getDateBef())) && (now.isEqual(event.getDateExact()) || now.isBefore(event.getDateExact()))) {
+            if((now.isEqual(event.getDateExact().minus(dateRange, ChronoUnit.DAYS)) || now.isAfter(event.getDateExact().minus(dateRange, ChronoUnit.DAYS)))) {
                 List<EventParticipant> eventParticipants = eventParticipantService.retrieveAllByIdEvent(event.getId());
 
                 // Event event = eventService.retrieveById(id);
