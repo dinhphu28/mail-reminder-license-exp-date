@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.idb.reminder.Entities.Event;
 import com.idb.reminder.Entities.EventParticipant;
-import com.idb.reminder.Services.EmailNotification;
+import com.idb.reminder.Services.NotificationSender;
 import com.idb.reminder.Services.EventParticipantService;
 import com.idb.reminder.Services.EventService;
 import com.idb.reminder.Utils.Mail.MailSenderUtil;
@@ -36,7 +36,7 @@ public class EventController {
     private MailSenderUtil mailSenderUtil;
 
     @Autowired
-    private EmailNotification emailNotification;
+    private NotificationSender emailNotification;
 
     @GetMapping(
         produces = MediaType.APPLICATION_JSON_VALUE
