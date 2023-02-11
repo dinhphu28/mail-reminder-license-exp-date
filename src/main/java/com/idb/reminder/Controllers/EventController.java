@@ -20,6 +20,7 @@ import com.idb.reminder.Entities.EventParticipant;
 import com.idb.reminder.Services.NotificationSender;
 import com.idb.reminder.Services.EventParticipantService;
 import com.idb.reminder.Services.EventService;
+import com.idb.reminder.Utils.ListIntegerUtil;
 import com.idb.reminder.Utils.Mail.MailSenderUtil;
 
 @RestController
@@ -44,8 +45,22 @@ public class EventController {
     public ResponseEntity<Object> retrieveAll() {
         ResponseEntity<Object> entity;
 
+        String resTmp = "";
+
         List<Event> events = eventService.retrieveAll();
 
+        for (Event event : events) {
+            if(event.getId().equals("411141d3-a34d-44c7-be80-2a5db50f9463")) {
+                resTmp = event.getDatesSendingNotice();
+                break;
+            }
+        }
+
+        ListIntegerUtil listIntegerUtil = new ListIntegerUtil();
+
+        List<Integer> resIntegers = listIntegerUtil.stringToListInteger(resTmp);
+
+        // entity = new ResponseEntity<>(resIntegers, HttpStatus.OK);
         entity = new ResponseEntity<>(events, HttpStatus.OK);
 
         return entity;
