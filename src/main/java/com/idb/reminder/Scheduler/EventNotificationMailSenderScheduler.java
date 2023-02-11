@@ -16,8 +16,8 @@ public class EventNotificationMailSenderScheduler {
         emailNotification.sendNotificationMailToAll();
     }
 
-    @Scheduled(cron = "${idb.properties.schedule.cron-expression}")
-    public void sendTelegramMessageNotification(){
-        emailNotification.sendNotificationTelegramToGroup();;
-    }
+    // @Scheduled(cron = "${idb.properties.schedule.cron-expression}")
+    // public void sendTelegramMessageNotification(){
+    //     emailNotification.sendNotificationTelegramToGroup();;
+    // }
 }
