@@ -6,17 +6,20 @@ import java.util.List;
 
 public class ListIntegerUtil {
     public List<Integer> stringToListInteger(String input) {
-        List<String> itemStrs = Arrays.asList(input.split(";"));
-
+        
         List<Integer> itemIntegers = new ArrayList<Integer>();
-        for (String string : itemStrs) {
-            try {
-                Integer num = Integer.parseInt(string);
 
-                itemIntegers.add(num);
-            } catch (Exception e) {
-                // TODO: handle exception
-                e.printStackTrace();
+        if(!input.isBlank()) {
+            List<String> itemStrs = Arrays.asList(input.split(";"));
+            for (String string : itemStrs) {
+                try {
+                    Integer num = Integer.parseInt(string);
+
+                    itemIntegers.add(num);
+                } catch (Exception e) {
+                    // TODO: handle exception
+                    e.printStackTrace();
+                }
             }
         }
 
