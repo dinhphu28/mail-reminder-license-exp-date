@@ -168,7 +168,7 @@ public class NotificationSender {
 
                     String messageContent = "<strong><i>" + event.getTitle() + "</i></strong>: " + "\n" + event.getContent() + "\n" + "<i>Expired date: " + event.getDateExact() + "</i>";
 
-                    MessageToSendModel messageToSendModel = new MessageToSendModel(messageContent, "HTML", false, false, null, "-619128183");
+                    MessageToSendModel messageToSendModel = new MessageToSendModel(messageContent, "HTML", false, false, null, groupId);
 
                     int kk = telegramMessageUtil.sendMessage(messageToSendModel);
                 } else {
@@ -179,7 +179,7 @@ public class NotificationSender {
                             // send notifcation - code here
                             String messageContent = "<strong><i>" + event.getTitle() + "</i></strong>: " + "\n" + event.getContent() + "\n" + "<i>Expired date: " + event.getDateExact() + "</i>";
 
-                            MessageToSendModel messageToSendModel = new MessageToSendModel(messageContent, "HTML", false, false, null, "-619128183");
+                            MessageToSendModel messageToSendModel = new MessageToSendModel(messageContent, "HTML", false, false, null, groupId);
 
                             int kk = telegramMessageUtil.sendMessage(messageToSendModel);
                         }
