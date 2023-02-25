@@ -55,8 +55,8 @@ public class Event {
     @Column(name = "c_dateexact")
     private LocalDateTime dateExact;
 
-    @Column(name = "c_datebef")
-    private LocalDateTime dateBef;
+    // @Column(name = "c_datebef")
+    // private LocalDateTime dateBef;
 
     @Column(name = "c_dates_sending_notice")
     private String datesSendingNotice;

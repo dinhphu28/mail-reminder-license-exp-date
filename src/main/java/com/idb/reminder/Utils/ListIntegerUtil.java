@@ -9,16 +9,18 @@ public class ListIntegerUtil {
         
         List<Integer> itemIntegers = new ArrayList<Integer>();
 
-        if(!input.isBlank()) {
-            List<String> itemStrs = Arrays.asList(input.split(";"));
-            for (String string : itemStrs) {
-                try {
-                    Integer num = Integer.parseInt(string);
-
-                    itemIntegers.add(num);
-                } catch (Exception e) {
-                    // TODO: handle exception
-                    e.printStackTrace();
+        if(input != null) {
+            if(!input.isBlank()) {
+                List<String> itemStrs = Arrays.asList(input.split(";"));
+                for (String string : itemStrs) {
+                    try {
+                        Integer num = Integer.parseInt(string);
+    
+                        itemIntegers.add(num);
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        // e.printStackTrace();
+                    }
                 }
             }
         }

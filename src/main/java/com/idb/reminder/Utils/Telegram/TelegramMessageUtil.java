@@ -26,18 +26,27 @@ public class TelegramMessageUtil {
 
     public int sendMessage(MessageToSendModel message) {
 
-        WebClient webClient = WebClient.create("https://api.telegram.org/bot" + botToken);
+        int res = 0;
+
+        try {
+            WebClient webClient = WebClient.create("https://api.telegram.org/bot" + botToken);
         
-        Mono<ResponseEntity<Void>> entityMono =  webClient.post()
-            .uri("/sendMessage")
-            .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-            .accept(MediaType.APPLICATION_JSON)
-            .body(Mono.just(message), MessageToSendModel.class)
-            .retrieve()
-            .toBodilessEntity();
+            Mono<ResponseEntity<Void>> entityMono =  webClient.post()
+                .uri("/sendMessage")
+                .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
+                .accept(MediaType.APPLICATION_JSON)
+                .body(Mono.just(message), MessageToSendModel.class)
+                .retrieve()
+                .toBodilessEntity();
 
-        HttpStatus statusCode = entityMono.block().getStatusCode();
+            HttpStatus statusCode = entityMono.block().getStatusCode();
 
-        return statusCode.value();
+            res = statusCode.value();
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        return res;
     }
 }
